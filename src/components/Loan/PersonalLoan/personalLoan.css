@@ -1,0 +1,218 @@
+h4,h5,h6{
+  font-weight: bold;
+}
+.css-1hv8oq8-MuiStepLabel-label.MuiStepLabel-alternativeLabel {
+  margin-top: 0px !important;
+  
+}
+.personalLoan{
+  font-family: Nunito Sans;
+    background-color: #eef5ff;
+   
+    width: 100%;
+}
+.plFormBox{
+   
+    background-color: #ffffff;
+    width: 800px;
+    position: relative;
+    top: 70px;
+    left: 260px;
+    
+}
+.formWizard{
+background-color:#bdd4ff;
+width: 100%;
+padding-top: 17px;
+height: 130px;
+}
+.personalForm{
+    padding: 20px 80px;
+}
+.custom-input {
+    width: 250px !important;
+    outline: 1px solid #a1a1a1;
+    outline-offset: -2px;
+}
+.custom-input:focus {
+    outline: 1px solid #0099ff !important;
+    outline-offset: -2px;
+  }
+  .form-label{
+    padding-top: 0px !important;
+    background-color: white;
+    top: 8px !important;
+  }
+  .custom_btn{
+   color: rgb(0, 0, 0);
+    width: 200px;
+    height: 45px;
+    border-radius: 40px !important;
+    border: 1px solid gray;
+    margin: 0px 3px !important;
+  }
+  .orange{
+    background-color: rgb(255, 136, 0);
+  }
+  .form-check-input[type=radio] {
+    margin-left: 0px;
+  }
+  .form-check-label {
+    padding-left: 2.15rem;
+}
+.msg{
+    font-size: 11px;
+    font-weight: 600;
+    margin-left: 6px;
+}
+.tenure{
+  padding: 20px;
+  width:90%;
+  margin: 0 20px;
+  border: 1px solid rgba(156, 156, 156, 0.527);
+  border-radius: 10px;
+
+}
+
+/* Add this CSS to your stylesheets */
+.range-slider {
+  /* Change the thumb color (dot) */
+  &::-webkit-slider-thumb {
+    background-color: orange;
+  }
+  &::-moz-range-thumb {
+    background-color: orange;
+  }
+  &::-ms-thumb {
+    background-color: orange;
+  }
+
+  /* Change the filled track color */
+  &::-webkit-slider-runnable-track {
+    background: linear-gradient(to right, orange, blue); /* You can customize the gradient colors */
+  }
+  &::-moz-range-track {
+    background: linear-gradient(to right, orange, blue);
+  }
+  &::-ms-track {
+    background: linear-gradient(to right, orange, blue);
+  }
+}
+.upload_btn{
+  font-size: 10px !important;
+  font-weight: 900 !important;
+  padding: 5px 10px !important;
+  background-color: transparent I !important;
+  border-radius: 20px !important;
+  border: 1px solid rgba(139, 139, 139, 0.247) !important;
+}
+.check-icon{
+  color: white;
+  border-radius: 50%;
+  padding: 3px;
+  background-color: green;
+}
+
+.badge-icon{
+  color: rgb(255, 187, 0);
+
+}
+.AdharKYCheading{
+  text-align: center;
+}
+.AdharOTPHeading{
+  text-align:center;
+}
+.otp-input{
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-bottom:  1px solid grey;
+}
+
+.loginOtp-input {
+  width: 40px;
+  margin: 5px;
+  text-align: center;
+  border: 1px solid grey;
+}
+
+.uploadadhar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.upload-box {
+  width: 350px;
+  height: 180px;
+  border-radius: 10px;
+  border: 1px solid #cccccc8f;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.upload-label {
+  cursor: pointer;
+  display: block;
+  font-weight: 900;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.upload-icon {
+  font-size: 24px;
+  margin-right: 8px;
+}
+  .clear_btn {
+      box-shadow: none !important;
+      text-transform: capitalize  !important;
+        border: 1px solid gray !important;
+        color: black !important;
+        width: 200px !important;
+          height: 45px !important;
+          border-radius: 40px !important;
+          margin: 0px 3px !important;
+}
+.btn_white{
+  text-transform: capitalize !important;
+  color: black !important;
+  
+    font-size: 14px !important;
+    background-color: rgb(255, 255, 255) !important;
+}
+.btn_orange{
+  color: white !important;
+    background-color: rgb(255, 115, 0) !important;
+}
+.selected-label {
+  font-weight: 700;
+}
+.css-1hg6wbx-MuiFormControl-root-MuiTextField-root .MuiInputBase-input{
+  font-size: 15px;
+}
+/* Hide default placeholder in date input */
+.ArthaTextField input[type="date"] {
+  color: transparent !important;
+}
+
+/* Show text color when input has a value */
+.ArthaTextField input[type="date"]:not([value=""]) {
+  color: initial !important;
+}
+.css-18kzc0b-MuiFormLabel-root-MuiInputLabel-root{
+  background-color: white;
+}
+.css-1jy569b-MuiFormLabel-root-MuiInputLabel-root{
+  background-color: white;
+}
+.radio-selected {
+  color: orange;
+}
+tenure-heading{
+  padding-right: 5px;
+}

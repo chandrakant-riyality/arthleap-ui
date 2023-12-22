@@ -1,0 +1,114 @@
+.drawer {
+    position: absolute;
+    top: 70px;
+    left: 10px;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    font-size: var(--title-body-large-p-size);
+    color: var(--neutral-6);
+    transition: width 0.5s; /* Add transition for smooth width change */
+  }
+  .active{
+    background-color: blue;
+  }
+  .left-nav-tab {
+    background-color: var(--primary-2);
+    color: var(--neutral-1);
+    height: auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: var(--padding-xl) var(--padding-base) var(--padding-xl) var(--padding-5xl);
+    gap: var(--gap-5xl);
+    transition: color 0.5s; /* Add transition for smooth color change */
+  }
+  
+  .left-nav-tab .home-icon {
+    transition: margin-left 0.5s; /* Add transition for smooth margin-left change */
+  }
+  
+  .left-nav-tab .home-loan {
+    margin-left: -20px; /* Adjust the margin to hide the label initially */
+  }
+  
+  .left-nav-tab:hover {
+    color: var(--neutral-6); /* Change the color to match your label color */
+    width: 300px; /* Adjust the width to reveal the label */
+  }
+  
+  .left-nav-tab:hover .home-icon {
+    margin-left: 20px; /* Adjust the margin to reveal the label */
+  }
+  
+  .active-link {
+    background-color: blue; /* Change the background color to your preference */
+    color: white; /* Change the text color to your preference */
+    font-weight: bold; /* Add any additional styles for the active link */
+  }
+  .drawer {
+    display: flex;
+    flex-direction: column;
+    background-color: #20232a;
+    padding: 20px;
+  }
+  
+  .left-nav {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .left-nav-tab {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .left-nav-tab:hover {
+    background-color: #61dafb;
+  }
+  
+  .active {
+    background-color: #61dafb;
+  }
+  
+  .home-icon {
+    margin-right: 10px;
+  }
+  
+  .home-loan {
+    color: white;
+  }
+  
+  .loan-tab {
+    position: relative;
+  }
+  
+  .greater-than-icon {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  .loan-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #20232a;
+    padding: 10px;
+    display: none;
+  }
+  
+  .loan-tab:hover .loan-dropdown {
+    display: block;
+  }
+  
+  .active-link {
+    color: white;
+  }
+  
