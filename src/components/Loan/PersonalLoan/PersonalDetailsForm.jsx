@@ -1,45 +1,65 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./personalLoan.css";
 import ArthaContinueButton from "../../fields/ArthaContinueButton.js";
 import ArthaClearButton from "../../fields/ArthaClearButton";
 import ArthaTextField from "../../fields/ArthaTextField";
+import PinCodePopup from "./PinCodePopup";
 
-const PersonalDetailsForm = ({ onSubmit }) => {
-  const [formData, setFormData] = useState({
+const PersonalDetailsForm = ( { onSubmit } ) => {
+  const [ formData, setFormData ] = useState( {
     panCardNo: "",
     mobileNo: "",
     fullName: "",
     dateOfBirth: "",
     emailId: "",
     pinCode: "",
-  });
+  } );
 
-  const [isFormValid, setIsFormValid] = useState(false);
+  useEffect( () => {
+    //call API https://arthavedh.com:6542/user/loan/personal/details
+    //which will give response { "usermobile": "8983333223","username": "PRATIK YUUU TTT","userpan": "YUUPJ9894F"}
+    let response = {
+      "usermobile": "8983333223",
+      "username": "PRATIK YUUU TTT",
+      "userpan": "YUUPJ9894F"
+    };
 
-  const handleChange = (e) => {
+    setFormData( {
+      panCardNo: response.userpan,
+      mobileNo: response.usermobile,
+      fullName: response.username,
+      dateOfBirth: "",
+      emailId: "",
+      pinCode: ""
+    } )
+
+  }, [] );
+  const [ isFormValid, setIsFormValid ] = useState( false );
+
+  const handleChange = ( e ) => {
     const { name, value } = e.target;
 
     // Apply specific validation based on the field name
     let updatedValue = value;
 
-    if (name === "panCardNo") {
+    if ( name === "panCardNo" ) {
       // Validate Pan card format: First 5 letters, 4 digits, 1 letter
       updatedValue =
-        value.slice(0, 5) +
-        value.slice(5, 9).replace(/\D/g, "") +
-        value.slice(9, 10).toUpperCase();
-    } else if (name === "fullName") {
+        value.slice( 0, 5 ) +
+        value.slice( 5, 9 ).replace( /\D/g, "" ) +
+        value.slice( 9, 10 ).toUpperCase();
+    } else if ( name === "fullName" ) {
       // Avoid digits in Full Name
-      updatedValue = value.replace(/\d/g, "");
-    } else if (name === "mobileNo") {
+      updatedValue = value.replace( /\d/g, "" );
+    } else if ( name === "mobileNo" ) {
       // Allow only numeric values in Mobile Number
-      updatedValue = value.replace(/\D/g, "");
-    } else if (name === "pinCode") {
+      updatedValue = value.replace( /\D/g, "" );
+    } else if ( name === "pinCode" ) {
       // Allow only numeric values in Pincode
-      updatedValue = value.replace(/\D/g, "").slice(0, 6);
+      updatedValue = value.replace( /\D/g, "" ).slice( 0, 6 );
     }
 
-    setFormData({ ...formData, [name]: updatedValue });
+    setFormData( { ...formData, [ name ]: updatedValue } );
     validateForm();
   };
 
@@ -47,33 +67,43 @@ const PersonalDetailsForm = ({ onSubmit }) => {
     const { panCardNo, mobileNo, fullName, dateOfBirth, emailId, pinCode } =
       formData;
 
-    const isPanCardValid = /^[A-Za-z]{5}\d{4}[A-Za-z]{1}$/.test(panCardNo);
-    const isMobileValid = /^\d{10}$/.test(mobileNo);
-    const isFullNameValid = fullName.trim() !== "";
-    const isDateOfBirthValid = dateOfBirth !== "";
-    const isEmailValid = /^\S+@\S+\.\S+$/.test(emailId);
-    const isPinCodeValid = /^\d{6}$/.test(pinCode);
+    const isPanCardValid = /^[A-Za-z]{5}\d{4}[A-Za-z]{1}$/.test( panCardNo );
+    const isMobileValid = /^\d{10}$/.test( mobileNo );
+    const isFullNameValid = fullName.trim() != "";
+    const isDateOfBirthValid = dateOfBirth != "";
+    const isEmailValid = /^\S+@\S+\.\S+$/.test( emailId );
+    let isPinCodeValid = /^\d{5}$/.test( pinCode );
+    if ( isPinCodeValid ) {
+      //Call API https://arthavedh.com:6542/personal-loan/pincode-validation and will get response as {statuscode=200}
+      let response = { statuscode: 200 };
+      if ( response.statuscode == 200 ) {
+        isPinCodeValid = true;
+      } else {
+        isPinCodeValid = false;
+      }
+    }
+
 
     setIsFormValid(
       isPanCardValid &&
-        isMobileValid &&
-        isFullNameValid &&
-        isDateOfBirthValid &&
-        isEmailValid &&
-        isPinCodeValid
+      isMobileValid &&
+      isFullNameValid &&
+      isDateOfBirthValid &&
+      isEmailValid &&
+      isPinCodeValid
     );
   };
 
   const handleClear = () => {
-    setFormData({
+    setFormData( {
       panCardNo: "",
       mobileNo: "",
       fullName: "",
       dateOfBirth: "",
       emailId: "",
       pinCode: "",
-    });
-    setIsFormValid(false);
+    } );
+    setIsFormValid( false );
   };
 
   const buttonStyle = {
@@ -90,7 +120,7 @@ const PersonalDetailsForm = ({ onSubmit }) => {
       : "rgb(255 255 255 / 39%)",
   };
   const handleContinue = () => {
-    onSubmit(formData);
+    onSubmit( formData );
     // Optionally, you can perform additional logic or validation before moving to the next step
   };
 
@@ -191,6 +221,7 @@ const PersonalDetailsForm = ({ onSubmit }) => {
             </ArthaContinueButton>
           </div>
         </div>
+        <PinCodePopup isOpen={isOpen} />
       </form>
     </>
   );
