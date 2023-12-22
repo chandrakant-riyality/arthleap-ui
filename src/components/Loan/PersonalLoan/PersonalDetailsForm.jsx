@@ -3,7 +3,6 @@ import "./personalLoan.css";
 import ArthaContinueButton from "../../fields/ArthaContinueButton.js";
 import ArthaClearButton from "../../fields/ArthaClearButton";
 import ArthaTextField from "../../fields/ArthaTextField";
-import PinCodePopup from "./PinCodePopup";
 
 const PersonalDetailsForm = ( { onSubmit } ) => {
   const [ formData, setFormData ] = useState( {
@@ -221,7 +220,6 @@ const PersonalDetailsForm = ( { onSubmit } ) => {
             </ArthaContinueButton>
           </div>
         </div>
-        <PinCodePopup isOpen={isOpen} />
       </form>
     </>
   );
