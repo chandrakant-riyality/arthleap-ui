@@ -3,8 +3,14 @@ import "./personalLoan.css";
 import ArthaContinueButton from "../../fields/ArthaContinueButton.js";
 import ArthaClearButton from "../../fields/ArthaClearButton";
 import ArthaTextField from "../../fields/ArthaTextField";
+import BasicModal from "./PinCodePopup";
+import { useSelector } from "react-redux";
+import { createLoanApplication } from "../../actioncreators/actioncreators";
 
 const PersonalDetailsForm = ( { onSubmit } ) => {
+
+
+  const [ isOpen, setIsOpen ] = React.useState( false );
   const [ formData, setFormData ] = useState( {
     panCardNo: "",
     mobileNo: "",
@@ -15,8 +21,8 @@ const PersonalDetailsForm = ( { onSubmit } ) => {
   } );
 
   useEffect( () => {
-    //call API https://arthavedh.com:6542/user/loan/personal/details
-    //which will give response { "usermobile": "8983333223","username": "PRATIK YUUU TTT","userpan": "YUUPJ9894F"}
+    const res = createLoanApplication();
+    console.log( res );
     let response = {
       "usermobile": "8983333223",
       "username": "PRATIK YUUU TTT",
@@ -77,6 +83,7 @@ const PersonalDetailsForm = ( { onSubmit } ) => {
       let response = { statuscode: 200 };
       if ( response.statuscode == 200 ) {
         isPinCodeValid = true;
+        setIsOpen( true );
       } else {
         isPinCodeValid = false;
       }
@@ -220,6 +227,7 @@ const PersonalDetailsForm = ( { onSubmit } ) => {
             </ArthaContinueButton>
           </div>
         </div>
+        <BasicModal isOpen={isOpen} />
       </form>
     </>
   );
