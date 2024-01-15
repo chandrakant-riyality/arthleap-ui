@@ -2,44 +2,59 @@ import React, { useState, useEffect } from "react";
 import "./LoginForm.css";
 import card from "./public/card1.svg";
 import { Link } from "react-router-dom";
+import { loginAPI } from "../actioncreators/actioncreators";
+import { useDispatch } from "react-redux";
+import { login, loginPayload } from "../actions/loanAction";
 
 const LoginForm = () => {
-  const [mobile, setMobile] = useState("");
-  const [isValidMobile, setIsValidMobile] = useState(true);
-  const [panCard, setPanCard] = useState("");
-  const [isValidPanCard, setIsValidPanCard] = useState(true);
-  const [isAgreed, setIsAgreed] = useState(false);
-  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const dispatch = useDispatch();
+  const [ mobile, setMobile ] = useState( "" );
+  const [ isValidMobile, setIsValidMobile ] = useState( true );
+  const [ panCard, setPanCard ] = useState( "" );
+  const [ isValidPanCard, setIsValidPanCard ] = useState( true );
+  const [ isAgreed, setIsAgreed ] = useState( false );
+  const [ isButtonDisabled, setIsButtonDisabled ] = useState( true );
 
-  useEffect(() => {
-    // Enable the button when mobile, pan card, and checkbox are valid
-    setIsButtonDisabled(!(isValidMobile && isValidPanCard && isAgreed));
-  }, [isValidMobile, isValidPanCard, isAgreed]);
+  useEffect( () => {
+    setIsButtonDisabled( !( isValidMobile && isValidPanCard && isAgreed ) );
+  }, [ isValidMobile, isValidPanCard, isAgreed ] );
 
-  const handleMobileChange = (e) => {
+  const handleMobileChange = ( e ) => {
     const enteredMobile = e.target.value;
-    const isNumeric = /^[0-9]+$/.test(enteredMobile);
+    const isNumeric = /^[0-9]+$/.test( enteredMobile );
 
-    if (isNumeric || enteredMobile === "") {
-      setMobile(enteredMobile);
-      setIsValidMobile(enteredMobile.length === 10);
+    if ( isNumeric || enteredMobile === "" ) {
+      setMobile( enteredMobile );
+      setIsValidMobile( enteredMobile.length === 10 );
     }
   };
 
-  const handlePanCardChange = (e) => {
+  const handlePanCardChange = ( e ) => {
     const enteredPanCard = e.target.value;
-    setPanCard(enteredPanCard);
+    setPanCard( enteredPanCard );
     const panCardRegex = /^[A-Za-z]{5}\d{4}[A-Za-z]{1}$/;
-    setIsValidPanCard(panCardRegex.test(enteredPanCard));
+    setIsValidPanCard( panCardRegex.test( enteredPanCard ) );
   };
 
   const handleAgreeChange = () => {
-    setIsAgreed(!isAgreed);
+    setIsAgreed( !isAgreed );
   };
 
-  const handleMobileClick = (e) => {
-    document.getElementById("country-code").innerHTML = "+91";
+  const handleMobileClick = ( e ) => {
+    document.getElementById( "country-code" ).innerHTML = "+91";
   };
+
+  const submit = () => {
+    let obj = { 'mobile': mobile, 'pan': panCard };
+    dispatch( loginPayload( obj ) )
+    loginAPI( mobile, panCard )
+      .then( response => {
+        dispatch( login( response ) );
+      } )
+      .catch( error => {
+        console.error( "Login failed:", error );
+      } );
+  }
 
   return (
     <div className="login-form-new">
@@ -64,9 +79,8 @@ const LoginForm = () => {
               <input
                 maxLength={10}
                 type="text"
-                className={`form-control ${
-                  isValidMobile ? "" : "error"
-                } mobile-input`}
+                className={`form-control ${isValidMobile ? "" : "error"
+                  } mobile-input`}
                 placeholder="Mobile No"
                 value={mobile}
                 onChange={handleMobileChange}
@@ -76,9 +90,8 @@ const LoginForm = () => {
           </div>
           <div className="subtitle">
             <div
-              className={`otp-verification-will ${
-                isValidMobile ? "" : "invalid-input"
-              }`}
+              className={`otp-verification-will ${isValidMobile ? "" : "invalid-input"
+                }`}
             >
               {isValidMobile
                 ? "OTP verification will be needed."
@@ -102,9 +115,8 @@ const LoginForm = () => {
           </div>
           <div className="subtitle">
             <div
-              className={`pan-card-validation ${
-                isValidPanCard ? "" : "invalid-input"
-              }`}
+              className={`pan-card-validation ${isValidPanCard ? "" : "invalid-input"
+                }`}
             >
               {isValidPanCard
                 ? "Valid Pan Card."
@@ -133,7 +145,7 @@ const LoginForm = () => {
           to={isButtonDisabled ? "#" : "getOtp"}
           className={`get-opt-sbmt ${isButtonDisabled ? "disabled" : ""}`}
           style={{ opacity: isButtonDisabled ? 0.39 : 1 }}
-          onClick={(e) => (isButtonDisabled ? e.preventDefault() : null)}
+          onClick={submit}
         >
           Get OTP
         </Link>

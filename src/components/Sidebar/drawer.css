@@ -1,13 +1,12 @@
 .drawer {
-    position: absolute;
-    top: 70px;
-    left: 10px;
+   margin: -14px -10px;
     width: auto;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
     box-sizing: border-box;
+    background-color: white;
     font-size: var(--title-body-large-p-size);
     color: var(--neutral-6);
     transition: width 0.5s; /* Add transition for smooth width change */
@@ -111,4 +110,7 @@
   .active-link {
     color: white;
   }
-  
+  .main-header {
+    z-index: 999;
+  }
+ 

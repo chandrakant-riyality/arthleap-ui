@@ -10,7 +10,6 @@
     height: 16px;
   }
   .mainLogo {
-    position: relative;
     width: 244px;
     height: 60px;
   }
@@ -68,6 +67,7 @@
     justify-content: space-between;
   }
   .header {
+    z-index: 999;
     position: absolute;
     top: 0;
     left: 0;
@@ -192,18 +192,7 @@
   .group-icon {
     width: 50.09px;
   }
-  .frame-parent {
-    position: absolute;
-    top: 188px;
-    left: calc(50% - 600px);
-    width: 1280px;
-    height: 192px;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: var(--gap-5xl);
-  }
+  
   .credit-score-checker {
     align-self: stretch;
     position: relative;
@@ -278,7 +267,7 @@
   .check-now1 {
     position: absolute;
     top:112px;
-   
+  text-decoration: none;
     font-size: var(--title-body-small-bold-psmall-bold-size);
     line-height: 20px;
     color: #10215f;
@@ -287,12 +276,12 @@
   }
   .check-now1:hover {
     position: absolute;
-    top:126px;
+    top:112px;
     text-decoration: none;
     font-size: var(--title-body-small-bold-psmall-bold-size);
     line-height: 20px;
     color: #10215f;
-    font-weight: 500;
+  font-weight: 700;
     z-index: 2;
   }
   .frame-parent6 {
@@ -306,14 +295,7 @@
     gap: var(--gap-5xl);
   }
  
-  .get-the-right {
-    position: absolute;
-    top: 107px;
-    left: calc(50% - 193px);
-    font-size: 32px;
-    line-height: 32px;
-    color: var(--primary-1);
-  }
+ 
   .credit-score {
     position: absolute;
     top: 450px;
@@ -327,6 +309,9 @@
     left: calc(50% - 119px);
     font-size: 24px;
   }
+  .drawer{
+   height: 90vh !important;
+  }
   .drawer-child {
     position: absolute;
     margin: 0 !important;
@@ -334,7 +319,7 @@
     left: -1px;
     background-color: var(--mono-white);
     width: 305px;
-    height: 1273px;
+    height: 200px;
     z-index: 0;
   }
   .chev1-right-icon,
@@ -352,91 +337,18 @@
   .chev1-right-icon {
     display: none;
   }
-  .left-nav-tab,
-  .left-nav-tab1,
-  .left-nav-tab2,
-  .left-nav-tab3 {
-    border-bottom: 1px solid var(--outline-outline);
-    box-sizing: border-box;
-    width: 300px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    padding: var(--padding-xl) var(--padding-base) var(--padding-xl)
-      var(--padding-5xl);
-    gap: var(--gap-5xl);
-  }
   .left-nav-tab {
     background-color: white;
     z-index: 1;
+    text-decoration: none;
     color: var(--neutral-1);
     height: 55px;
     margin: 0px;
   }
   
-  .left-nav-tab1,
-  .left-nav-tab2,
-  .left-nav-tab3 {
-    background-color: var(--mono-white);
-    z-index: 2;
-  }
-  .left-nav-tab2,
-  .left-nav-tab3 {
-    z-index: 3;
-  }
-  .left-nav-tab3 {
-    z-index: 4;
-  }
-  .loan-types-icon {
-    position: relative;
-    width: 24px;
-    height: 24px;
-  }
-  .left-nav-tab4,
-  .left-nav-tab5,
-  .left-nav-tab6,
-  .left-nav-tab7 {
-    background-color: var(--mono-white);
-    border-bottom: 1px solid var(--outline-outline);
-    box-sizing: border-box;
-    width: 300px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    padding: var(--padding-xl) var(--padding-base) var(--padding-xl)
-      var(--padding-5xl);
-    gap: var(--gap-5xl);
-    z-index: 5;
-  }
-  .left-nav-tab5,
-  .left-nav-tab6,
-  .left-nav-tab7 {
-    background-color: var(--primary-4);
-    opacity: 0;
-    z-index: 6;
-  }
-  .left-nav-tab6,
-  .left-nav-tab7 {
-    background-color: var(--mono-white);
-    z-index: 7;
-  }
-  .left-nav-tab7 {
-    z-index: 8;
-  }
-  .drawer,
-  .web-13 {
-    height: 1500px;
-    overflow: hidden;
-  }
   .drawer {
-    position: absolute;
-    top: 56px;
-    left: 0px;
-    width: 50px;
+    background-color: white;
+   margin: -14px -10px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -482,3 +394,86 @@
     color: white; /* Change the text color to your preference */
     font-weight: bold; /* Add any additional styles for the active link */
   }
+ .main-header {
+   z-index: 999;
+ }
+.dashboard{
+  width: 100%;
+  margin-left: 5%;
+}
+.dashboardHeader{
+  margin-top: 6% !important;
+}
+
+.dashboardHeader2{
+  border-radius: 10px;
+  padding:10px 10px;
+  background-color: white;
+}
+.dashboardmsg{
+  font-size: 12px;
+  margin: 0px !important;
+}
+
+.loanBoxes{
+  margin-right: 10px;
+  background-color: white;
+    border-radius: 10px;
+    border: 1px solid gray;
+}
+
+.LoanHeading{
+  font-weight: bold;
+  font-size: 14px;
+  color:#1C4494;
+text-align: center;
+  margin-left: 10px;
+}
+.loandiscription{
+  font-size: 10px;
+  padding: 2px 5px;
+}
+.offer{
+color: #1C4494;
+font-size: 14px;
+font-weight: bold;
+}
+.apply {
+  color: #ff3c00;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 14px;
+}
+.apply:hover{
+  color: #ff3c00;
+    font-weight: bold;
+    font-size: 14px;
+    text-decoration: none;
+}
+.eligibilityCheck{
+  margin-left: -12px !important;
+}
+.loanSection{
+  padding: 5px 10px;
+  background-color: white;
+  border-radius: 10px;
+  
+ 
+}
+.loanMsg{
+  font-weight: bold;
+    font-size: 14px;
+}
+.creditScore{
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+}
+.creditscore-subheading{
+  font-size: 12px;
+}
+
+.creditscore-subheading2 {
+  font-size: 10px;
+  text-align: center;
+}

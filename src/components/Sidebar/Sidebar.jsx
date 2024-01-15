@@ -10,17 +10,17 @@ import PersonalLoan from '../Loan/PersonalLoan/PersonalLoan';
 const Sidebar = () => {
   return (
     <>
-    
+
       <div className="web-13">
         <Header />
         <Drawer />
         <Routes>
-          <Route path='/' element={<Dashboard/>}/>
-        <Route path='/home' element={<Dashboard/>}/>
-        <Route path='/loans' element={<PersonalLoan/>}/>
-      </Routes>
-      
-     
+          <Route path='/' element={<Dashboard />} />
+          <Route path='/home' element={<Dashboard />} />
+          <Route path='/personalloans' element={<PersonalLoan />} />
+        </Routes>
+
+
       </div>
     </>
   );
